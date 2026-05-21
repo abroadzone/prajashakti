@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हाम्रो प्रजाशक्ति — Nepal's Digital Newsroom</title>
+<meta name="description" content="हाम्रो प्रजाशक्ति — Nepal and Northeast India's most trusted news source. Latest breaking news, politics, culture, sports and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:   #ffffff;
+  --bg:      #F7F5F1;
+  --bg2:     #EEECEA;
+  --bg3:     #E4E2DE;
+  --surface: #ffffff;
+  --border:  #DDD9D3;
+  --border2: #C8C4BE;
+
+  --red:     #C41225;
+  --red2:    #A50E1E;
+  --red-bg:  #FDF1F3;
+  --red-dim: rgba(196,18,37,0.08);
+
+  --navy:    #1B2A4A;
+  --navy2:   #0F1E36;
+  --navy-bg: #F0F3F8;
+
+  --gold:    #B8860B;
+  --gold-bg: #FDF8EE;
+
+  --green:   #1A7A3F;
+  --green-bg:#F0FAF4;
+
+  --ink:     #141414;
+  --ink2:    #3D3D3D;
+  --ink3:    #6B6A67;
+  --ink4:    #9E9C98;
+
+  --serif:   'Playfair Display', Georgia, 'Times New Roman', serif;
+  --body:    'Lora', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+  --mono:    'DM Mono', monospace;
+
+  --r:  4px;
+  --r2: 8px;
+  --r3: 12px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
+  --shadow:    0 2px 12px rgba(0,0,0,0.09);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --container: 1260px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+button { font-family: var(--sans); cursor: pointer; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+
+/* ══════════════════════════════════
+   BREAKING BAR
+══════════════════════════════════ */
+.breaking-bar {
+  background: var(--red);
+  overflow: hidden;
+}
+.breaking-inner {
+  display: flex;
+  align-items: stretch;
+  height: 36px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.breaking-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255,255,255,0.25);
+  margin-right: 16px;
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.pulse-dot {
+  width: 7px; height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.35; transform:scale(0.65); }
+}
+.ticker-wrap {
+  flex: 1; overflow: hidden;
+  display: flex; align-items: center;
+  position: relative;
+}
+.ticker-wrap::after {
+  content: '';
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, var(--red));
+  pointer-events: none;
+}
+.ticker-track {
+  display: flex; align-items: center; gap: 36px;
+  white-space: nowrap;
+  animation: scroll-ticker 48s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes scroll-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-item {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12.5px; font-weight: 500; color: #fff;
+  cursor: pointer; flex-shrink: 0;
+}
+.ticker-tag {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  background: rgba(255,255,255,0.22);
+  padding: 2px 7px; border-radius: 2px;
+}
+.ticker-sep { color: rgba(255,255,255,0.35); font-size: 9px; }
+.breaking-time {
+  padding: 0 0 0 16px;
+  border-left: 1px solid rgba(255,255,255,0.25);
+  font-size: 10.5px; color: rgba(255,255,255,0.75);
+  font-family: var(--mono);
+  display: flex; align-items: center;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   UTILITY BAR
+══════════════════════════════════ */
+.utility-bar {
+  background: var(--navy);
+  border-bottom: 2px solid var(--red);
+}
+.utility-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 34px;
+  font-size: 11.5px; color: rgba(255,255,255,0.65);
+}
+.util-left, .util-right { display: flex; align-items: center; gap: 14px; }
+.util-link {
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; transition: color 0.15s;
+  color: rgba(255,255,255,0.65);
+}
+.util-link:hover { color: #fff; }
+.util-sep { color: rgba(255,255,255,0.2); }
+.lang-set { display: flex; align-items: center; gap: 5px; }
+.lang-btn {
+  font-size: 10.5px; padding: 1px 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px; cursor: pointer;
+  background: transparent; color: rgba(255,255,255,0.65);
+  transition: all 0.15s;
+}
+.lang-btn.active, .lang-btn:hover {
+  background: var(--red); border-color: var(--red); color: #fff;
+}
+
+/* ══════════════════════════════════
+   MASTHEAD
+══════════════════════════════════ */
+.masthead {
+  background: var(--white);
+  border-bottom: 3px solid var(--red);
+  padding: 16px 0;
+}
+.masthead-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.masthead-left {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.masthead-dateline {
+  font-size: 11px; color: var(--ink3);
+  font-family: var(--mono); letter-spacing: 0.04em;
+}
+.masthead-edition {
+  font-size: 11px; color: var(--ink3);
+}
+.masthead-edition strong { color: var(--red); font-weight: 600; }
+.masthead-readers {
+  margin-top: 2px;
+  font-size: 10.5px; color: var(--ink4);
+}
+.masthead-readers strong { color: var(--navy); font-weight: 600; }
+
+.masthead-logo {
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.logo-img {
+  height: 80px; width: auto; max-width: 320px;
+  object-fit: contain;
+}
+.logo-img-fallback {
+  font-family: var(--serif);
+  font-size: 36px; font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+.logo-rule {
+  width: 100%; height: 1px; margin: 8px 0;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+}
+.logo-tagline {
+  font-size: 9.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink4);
+  font-weight: 500;
+}
+
+.masthead-right {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 10px;
+}
+.social-row { display: flex; gap: 6px; }
+.social-btn {
+  width: 30px; height: 30px;
+  border-radius: var(--r);
+  background: var(--bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; cursor: pointer;
+  transition: all 0.15s; color: var(--ink2);
+}
+.social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.epaper-cta {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--red); color: #fff;
+  font-size: 11.5px; font-weight: 600;
+  padding: 6px 14px; border-radius: var(--r);
+  cursor: pointer; letter-spacing: 0.03em;
+  transition: background 0.15s; border: none;
+}
+.epaper-cta:hover { background: var(--red2); }
+
+/* ══════════════════════════════════
+   PRIMARY NAV
+══════════════════════════════════ */
+.primary-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 90;
+  box-shadow: var(--shadow-sm);
+}
+.nav-scroll {
+  display: flex; align-items: stretch;
+  height: 44px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+.nav-link {
+  padding: 0 15px;
+  font-size: 12.5px; font-weight: 600;
+  color: var(--ink2);
+  display: flex; align-items: center;
+  white-space: nowrap; cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s; letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.nav-link:hover { color: var(--red); background: var(--red-dim); }
+.nav-link.active { color: var(--red); border-bottom-color: var(--red); }
+.nav-link.home { color: var(--navy); font-weight: 700; }
+.nav-link.home.active { color: var(--red); border-bottom-color: var(--red); }
+.nav-divider { width: 1px; background: var(--border); margin: 10px 4px; flex-shrink: 0; }
+.nav-live { color: var(--red) !important; display: flex; align-items: center; gap: 5px; }
+.nav-search-btn {
+  margin-left: auto; display: flex; align-items: center;
+  gap: 8px; padding: 0 16px; border-left: 1px solid var(--border);
+  color: var(--ink3); font-size: 12.5px; font-weight: 500;
+  cursor: pointer; flex-shrink: 0; transition: color 0.15s;
+}
+.nav-search-btn:hover { color: var(--red); }
+
+/* ══════════════════════════════════
+   PAGE BODY
+══════════════════════════════════ */
+.page { padding: 22px 0 48px; }
+
+/* ══════════════════════════════════
+   SECTION HEADS
+══════════════════════════════════ */
+.sec-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.sec-accent {
+  width: 4px; height: 22px;
+  background: var(--red); border-radius: 2px; flex-shrink: 0;
+}
+.sec-title {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 700;
+  color: var(--ink); white-space: nowrap;
+}
+.sec-title-sm {
+  font-family: var(--serif);
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); white-space: nowrap;
+}
+.sec-rule { flex: 1; height: 1px; background: var(--border); }
+.sec-rule-red { flex: 1; height: 2px; background: linear-gradient(90deg, var(--red), transparent); }
+.sec-more {
+  font-size: 11px; font-weight: 600;
+  color: var(--red); cursor: pointer;
+  display: flex; align-items: center; gap: 3px;
+  white-space: nowrap; text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sec-more:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════
+   HERO LAYOUT
+══════════════════════════════════ */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+}
+.hero-main {
+  background: var(--white);
+  cursor: pointer; overflow: hidden;
+  position: relative; min-height: 460px;
+  display: flex; flex-direction: column;
+}
+.hero-img-wrap { overflow: hidden; flex-shrink: 0; }
+.hero-img-placeholder {
+  width: 100%; height: 280px;
+  position: relative; overflow: hidden;
+}
+.hpi-assam    { background: linear-gradient(160deg,#b8d4c0 0%,#7aab8c 50%,#4a8560 100%); }
+.hpi-manipur  { background: linear-gradient(160deg,#e8c8b0 0%,#c89878 50%,#a07850 100%); }
+.hpi-politics { background: linear-gradient(160deg,#c0ccdc 0%,#8898b8 50%,#506090 100%); }
+.hpi-wildlife { background: linear-gradient(160deg,#c8d8a8 0%,#98b868 50%,#709040 100%); }
+.hpi-culture  { background: linear-gradient(160deg,#dcc0c8 0%,#b88898 50%,#906070 100%); }
+.hpi-flood    { background: linear-gradient(160deg,#b0c8dc 0%,#7098b8 50%,#407090 100%); }
+.hpi-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+}
+.hpi-label {
+  position: absolute; bottom: 14px; left: 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(255,255,255,0.9);
+  font-family: var(--sans);
+}
+
+.hero-main-body {
+  padding: 20px 22px 22px;
+  flex: 1;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.hero-cat-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--red); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 10px;
+  border-radius: 2px; align-self: flex-start;
+}
+.hero-cat-pill.navy { background: var(--navy); }
+.hero-cat-pill.gold { background: var(--gold); }
+.hero-title {
+  font-family: var(--serif);
+  font-size: 24px; font-weight: 700; line-height: 1.25;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+.hero-main:hover .hero-title { color: var(--red); }
+.hero-excerpt {
+  font-family: var(--body);
+  font-size: 13.5px; color: var(--ink2); line-height: 1.65;
+}
+.hero-byline {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; color: var(--ink3);
+  border-top: 1px solid var(--border); padding-top: 10px;
+  margin-top: auto;
+}
+.hero-byline strong { color: var(--ink2); font-weight: 600; }
+.byline-dot { width: 3px; height: 3px; background: var(--border2); border-radius: 50%; }
+
+/* Right column */
+.hero-right {
+  display: grid; grid-template-rows: 1fr 1px 1fr;
+  background: var(--white);
+}
+.hero-right-sep { background: var(--border); }
+.hero-right-item {
+  background: var(--white); cursor: pointer; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: background 0.15s;
+}
+.hero-right-item:hover { background: var(--bg); }
+.hri-img-wrap { overflow: hidden; flex-shrink: 0; }
+.hri-img-placeholder {
+  width: 100%; height: 150px;
+  position: relative; overflow: hidden;
+}
+.hri-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.hri-title {
+  font-family: var(--serif);
+  font-size: 14.5px; font-weight: 700; line-height: 1.3;
+  color: var(--ink); transition: color 0.15s;
+}
+.hero-right-item:hover .hri-title { color: var(--red); }
+.hri-meta { font-size: 10.5px; color: var(--ink4); }
+
+/* ══════════════════════════════════
+   LIVE TICKER BAR (in-page)
+══════════════════════════════════ */
+.live-bar {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: var(--r2);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.live-bar-head {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+  background: var(--red-bg);
+}
+.live-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--red); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 9px; border-radius: 2px;
+}
+.live-topic { font-size: 13px; font-weight: 700; color: var(--ink); }
+.live-ts { font-size: 10.5px; color: var(--ink4); font-family: var(--mono); margin-left: auto; }
+.live-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 10px 16px; border-bottom: 1px solid var(--bg2);
+  cursor: pointer; transition: background 0.12s;
+}
+.live-item:last-child { border-bottom: none; }
+.live-item:hover { background: var(--red-bg); }
+.live-time {
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--red); font-weight: 600;
+  flex-shrink: 0; padding-top: 2px; min-width: 40px;
+}
+.live-text {
+  font-size: 13px; font-family: var(--body);
+  color: var(--ink2); line-height: 1.45;
+}
+.live-text strong { color: var(--ink); font-weight: 600; }
+
+/* ══════════════════════════════════
+   FEATURED STRIP
+══════════════════════════════════ */
+.feat-strip {
+  background: var(--navy);
+  border-radius: var(--r2);
+  overflow: hidden;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+}
+.feat-strip-head {
+  padding: 10px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center;
+  gap: 10px;
+}
+.feat-strip-label {
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+.feat-strip-sub { font-size: 10.5px; color: rgba(255,255,255,0.4); margin-left: auto; }
+.feat-strip-body {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: rgba(255,255,255,0.08);
+}
+.feat-item {
+  background: var(--navy); padding: 14px 15px;
+  cursor: pointer; transition: background 0.15s;
+}
+.feat-item:hover { background: rgba(255,255,255,0.07); }
+.feat-item-cat {
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #F4B942; margin-bottom: 6px;
+}
+.feat-item-title {
+  font-family: var(--serif);
+  font-size: 13.5px; font-weight: 700; line-height: 1.3;
+  color: rgba(255,255,255,0.9);
+  transition: color 0.15s;
+}
+.feat-item:hover .feat-item-title { color: #fff; }
+.feat-item-time { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* ══════════════════════════════════
+   STATE CATEGORY TABS
+══════════════════════════════════ */
+.cat-tabs {
+  display: flex; gap: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+.cat-tab {
+  flex: 1; padding: 13px 10px;
+  text-align: center; cursor: pointer;
+  border-right: 1px solid var(--border);
+  transition: background 0.15s; position: relative;
+}
+.cat-tab:last-child { border-right: none; }
+.cat-tab:hover { background: var(--red-bg); }
+.cat-tab.active { background: var(--red-bg); }
+.cat-tab.active::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--red);
+}
+.cat-icon { font-size: 20px; margin-bottom: 4px; }
+.cat-name { font-size: 11px; font-weight: 700; color: var(--ink2); }
+.cat-tab.active .cat-name { color: var(--red); }
+.cat-count { font-size: 9.5px; color: var(--ink4); font-family: var(--mono); }
+
+/* ══════════════════════════════════
+   MAIN + SIDEBAR GRID
+══════════════════════════════════ */
+.layout { display: grid; grid-template-columns: 1fr 298px; gap: 24px; align-items: start; }
+
+/* ══════════════════════════════════
+   NEWS CARDS
+══════════════════════════════════ */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden; cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.card-img-wrap { overflow: hidden; position: relative; }
+.card-img-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; position: relative; overflow: hidden;
+}
+.card-img-placeholder::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.35) 0%, transparent 60%);
+}
+.card-badge {
+  position: absolute; top: 8px; left: 8px;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: 2px;
+  z-index: 1;
+}
+.cb-red   { background: var(--red); color: #fff; }
+.cb-navy  { background: var(--navy); color: #fff; }
+.cb-gold  { background: var(--gold); color: #fff; }
+.cb-green { background: var(--green); color: #fff; }
+.card-body { padding: 14px 15px 15px; }
+.card-cat {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; margin-bottom: 7px;
+  display: flex; align-items: center; gap: 6px;
+}
+.card-cat.red    { color: var(--red); }
+.card-cat.navy   { color: var(--navy); }
+.card-cat.green  { color: var(--green); }
+.card-cat.gold   { color: var(--gold); }
+.card-cat-sep { width: 3px; height: 3px; background: var(--border2); border-radius: 50%; }
+.card-title {
+  font-family: var(--serif);
+  font-size: 15px; font-weight: 700; line-height: 1.3;
+  color: var(--ink); margin-bottom: 8px;
+  transition: color 0.15s;
+}
+.card:hover .card-title { color: var(--red); }
+.card-excerpt {
+  font-family: var(--body);
+  font-size: 12.5px; color: var(--ink2); line-height: 1.6;
+  margin-bottom: 10px;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-meta {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10.5px; color: var(--ink4);
+  border-top: 1px solid var(--bg2); padding-top: 9px;
+}
+.card-views { margin-left: auto; display: flex; align-items: center; gap: 3px; }
+
+/* HORIZONTAL CARD */
+.hcard {
+  display: grid; grid-template-columns: 96px 1fr;
+  gap: 12px; padding: 12px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r2); cursor: pointer;
+  transition: box-shadow 0.15s, background 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+.hcard:hover { box-shadow: var(--shadow); background: var(--bg); }
+.hcard-img {
+  width: 96px; height: 66px;
+  border-radius: var(--r); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.hcard-body { overflow: hidden; }
+.hcard-cat {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 4px;
+}
+.hcard-title {
+  font-family: var(--serif);
+  font-size: 13px; font-weight: 700; line-height: 1.3;
+  color: var(--ink); transition: color 0.15s;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.hcard:hover .hcard-title { color: var(--red); }
+.hcard-meta { font-size: 10px; color: var(--ink4); margin-top: 5px; }
+
+/* LIST ITEM */
+.litem {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--bg2);
+  cursor: pointer;
+}
+.litem:last-child { border-bottom: none; }
+.litem:hover { padding-left: 4px; }
+.litem-num {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--red); font-weight: 700; flex-shrink: 0;
+  padding-top: 1px; min-width: 20px;
+}
+.litem-body { flex: 1; overflow: hidden; }
+.litem-title {
+  font-family: var(--body);
+  font-size: 13px; font-weight: 600; line-height: 1.4;
+  color: var(--ink); transition: color 0.15s;
+}
+.litem:hover .litem-title { color: var(--red); }
+.litem-meta { font-size: 10px; color: var(--ink4); margin-top: 3px; }
+
+/* ══════════════════════════════════
+   AD ZONES
+══════════════════════════════════ */
+.ad-zone {
+  background: var(--white);
+  border: 1px dashed var(--border2);
+  border-radius: var(--r2); overflow: hidden;
+}
+.ad-label {
+  text-align: center; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink4); padding: 5px;
+  border-bottom: 1px dashed var(--border);
+  background: var(--bg);
+}
+.ad-slot {
+  width: 100%; min-height: 90px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 6px;
+  cursor: pointer; padding: 16px;
+  background: repeating-linear-gradient(
+    45deg, var(--bg) 0px, var(--bg) 1px, var(--white) 1px, var(--white) 18px
+  );
+}
+.ad-slot-text { font-size: 11.5px; color: var(--ink4); text-align: center; font-weight: 500; }
+.ad-slot-dim  { font-family: var(--mono); font-size: 10px; color: var(--ink4); opacity: 0.6; }
+
+/* ══════════════════════════════════
+   EPAPER SECTION
+══════════════════════════════════ */
+.epaper-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden; margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+.epaper-head {
+  background: linear-gradient(90deg, var(--navy), #2A3F6A);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.epaper-head-title {
+  font-family: var(--serif);
+  font-size: 16px; font-weight: 700; color: #fff;
+}
+.epaper-head-more {
+  margin-left: auto; font-size: 10.5px;
+  color: rgba(255,255,255,0.65); cursor: pointer;
+  font-weight: 500;
+}
+.epaper-head-more:hover { color: #fff; }
+.epaper-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; background: var(--border);
+}
+.epaper-card {
+  background: var(--white); cursor: pointer;
+  padding: 14px; transition: background 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.epaper-card:hover { background: var(--red-bg); }
+.epaper-thumb {
+  width: 100%; aspect-ratio: 3/4;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 6px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.15s;
+}
+.epaper-card:hover .epaper-thumb { border-color: var(--red); }
+.epaper-thumb-grid {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0,rgba(0,0,0,0.04) 1px, transparent 1px, transparent 14px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0,rgba(0,0,0,0.04) 1px, transparent 1px, transparent 14px);
+}
+.epaper-thumb-icon { font-size: 30px; opacity: 0.35; position: relative; z-index:1; }
+.epaper-thumb-name {
+  font-family: var(--serif); font-size: 11px; font-weight: 700;
+  color: var(--ink3); text-align: center; position: relative; z-index:1;
+  line-height: 1.3;
+}
+.epaper-card-edition { font-size: 12px; font-weight: 700; color: var(--ink); }
+.epaper-card-date { font-size: 10px; color: var(--ink4); font-family: var(--mono); }
+.epaper-card-btn {
+  width: 100%; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  color: var(--ink2); font-size: 10.5px; font-weight: 600;
+  padding: 6px; text-align: center; cursor: pointer;
+  transition: all 0.15s; font-family: var(--sans);
+}
+.epaper-card:hover .epaper-card-btn { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* ══════════════════════════════════
+   SIDEBAR WIDGETS
+══════════════════════════════════ */
+.sidebar { display: flex; flex-direction: column; gap: 18px; }
+
+.widget {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.widget-head {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--bg2);
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg);
+}
+.w-accent { width: 3px; height: 16px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+.w-accent.navy { background: var(--navy); }
+.w-accent.green { background: var(--green); }
+.widget-title {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink); flex: 1;
+}
+
+/* Trending */
+.trend-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px; border-bottom: 1px solid var(--bg2);
+  cursor: pointer; transition: background 0.12s;
+}
+.trend-item:last-child { border-bottom: none; }
+.trend-item:hover { background: var(--red-bg); }
+.trend-num {
+  font-family: var(--mono); font-size: 14px; font-weight: 700;
+  color: var(--red); min-width: 20px; flex-shrink: 0;
+  padding-top: 1px;
+}
+.trend-num.muted { color: var(--ink4); }
+.trend-title {
+  font-family: var(--body);
+  font-size: 12.5px; font-weight: 600; line-height: 1.35;
+  color: var(--ink); transition: color 0.15s;
+}
+.trend-item:hover .trend-title { color: var(--red); }
+.trend-meta { font-size: 10px; color: var(--ink4); margin-top: 3px; }
+
+/* Epaper sidebar */
+.epaper-w { padding: 14px; }
+.epaper-w-preview {
+  width: 100%; aspect-ratio: 3/4;
+  background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+  cursor: pointer; transition: border-color 0.15s;
+  position: relative; overflow: hidden; margin-bottom: 10px;
+}
+.epaper-w-preview:hover { border-color: var(--red); }
+.epaper-w-grid {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0,rgba(0,0,0,0.03) 1px,transparent 1px,transparent 12px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.03) 0,rgba(0,0,0,0.03) 1px,transparent 1px,transparent 12px);
+}
+.epaper-w-icon { font-size: 38px; opacity: 0.25; position: relative; z-index:1; }
+.epaper-w-name {
+  font-family: var(--serif); font-size: 13px; font-weight: 700;
+  color: var(--ink3); text-align: center; position: relative; z-index:1;
+}
+.epaper-w-date { font-size: 10px; color: var(--ink4); font-family: var(--mono); position: relative; z-index:1; }
+.epaper-w-editions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+.epaper-w-ed {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 7px 9px; cursor: pointer;
+  transition: border-color 0.15s;
+}
+.epaper-w-ed:hover { border-color: var(--red); }
+.epaper-w-ed-name { font-size: 11px; font-weight: 700; color: var(--ink2); }
+.epaper-w-ed-date { font-size: 9.5px; color: var(--ink4); margin-top: 1px; }
+.epaper-dl {
+  width: 100%; background: var(--navy); color: #fff;
+  border: none; border-radius: var(--r); padding: 9px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: background 0.15s;
+}
+.epaper-dl:hover { background: var(--red); }
+
+/* Weather */
+.weather-w { padding: 14px; }
+.weather-main { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.weather-icon { font-size: 50px; line-height:1; }
+.weather-temp { font-size: 38px; font-weight: 300; color: var(--ink); line-height:1; }
+.weather-temp sup { font-size: 16px; color: var(--ink3); vertical-align: super; }
+.weather-loc { font-size: 11.5px; color: var(--ink3); margin-top: 2px; }
+.weather-desc { font-size: 11px; color: var(--red); font-weight: 600; margin-top: 3px; }
+.weather-stats { display: flex; gap: 6px; margin-bottom: 10px; }
+.weather-stat {
+  flex: 1; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 8px 6px; text-align: center;
+}
+.weather-stat-v { font-size: 13px; font-weight: 700; color: var(--ink); }
+.weather-stat-l { font-size: 9.5px; color: var(--ink4); margin-top: 2px; }
+.weather-forecast { display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; }
+.fc-day { background: var(--bg); border-radius: var(--r); padding: 6px 3px; text-align: center; border: 1px solid var(--border); }
+.fc-name { font-size: 9.5px; color: var(--ink4); font-weight: 500; }
+.fc-icon { font-size: 16px; margin: 2px 0; }
+.fc-temp { font-size: 11px; font-weight: 700; color: var(--ink2); }
+
+/* Poll */
+.poll-w { padding: 14px; }
+.poll-q { font-family: var(--body); font-size: 13.5px; font-weight: 600; color: var(--ink); line-height:1.45; margin-bottom: 13px; }
+.poll-opt {
+  position: relative; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 9px 12px; margin-bottom: 7px; cursor: pointer;
+  overflow: hidden; transition: border-color 0.15s;
+}
+.poll-opt:hover { border-color: var(--red); }
+.poll-opt-bar {
+  position: absolute; left:0; top:0; bottom:0;
+  background: var(--red-dim); transition: width 0.6s ease;
+}
+.poll-opt-row {
+  position: relative; z-index:1;
+  display: flex; justify-content: space-between;
+  font-size: 12px; font-weight: 500; color: var(--ink2);
+}
+.poll-opt-pct { color: var(--red); font-family: var(--mono); font-weight: 700; font-size: 11px; }
+.poll-votes { font-size: 10px; color: var(--ink4); text-align: center; margin-top: 8px; }
+
+/* Newsletter */
+.newsletter-w { padding: 16px; }
+.newsletter-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+.newsletter-desc { font-size: 12px; color: var(--ink3); line-height: 1.5; margin-bottom: 12px; font-family: var(--body); }
+.nl-input {
+  width: 100%; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 9px 12px; color: var(--ink);
+  font-size: 13px; font-family: var(--sans);
+  outline: none; margin-bottom: 8px; transition: border-color 0.15s;
+}
+.nl-input:focus { border-color: var(--red); background: #fff; }
+.nl-input::placeholder { color: var(--ink4); }
+.nl-btn {
+  width: 100%; background: var(--red); color: #fff;
+  border: none; border-radius: var(--r); padding: 9px;
+  font-size: 12.5px; font-weight: 700; cursor: pointer;
+  transition: background 0.15s; font-family: var(--sans);
+  letter-spacing: 0.02em;
+}
+.nl-btn:hover { background: var(--red2); }
+.nl-note { font-size: 10px; color: var(--ink4); text-align: center; margin-top: 8px; }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.footer {
+  background: var(--navy);
+  border-top: 4px solid var(--red);
+  margin-top: 40px;
+  color: rgba(255,255,255,0.8);
+}
+.footer-top { padding: 40px 0 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+
+.footer-logo-name {
+  font-family: var(--serif); font-size: 26px; font-weight: 900;
+  color: #fff; margin-bottom: 3px;
+}
+.footer-logo-sub { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+.footer-about { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 16px; font-family: var(--body); }
+.footer-social { display: flex; gap: 7px; }
+.footer-soc {
+  width: 32px; height: 32px; border-radius: var(--r);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; cursor: pointer;
+  transition: all 0.15s; color: rgba(255,255,255,0.7);
+}
+.footer-soc:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+.footer-col-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #fff;
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--red);
+  display: inline-block;
+}
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-link {
+  font-size: 12.5px; color: rgba(255,255,255,0.6);
+  cursor: pointer; display: flex; align-items: center; gap: 5px;
+  transition: color 0.15s;
+}
+.footer-link::before { content: '›'; color: rgba(255,255,255,0.25); }
+.footer-link:hover { color: #fff; }
+.footer-link:hover::before { color: var(--red); }
+
+.footer-bottom { padding: 14px 0; }
+.footer-bottom-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+}
+.footer-credit { display: flex; align-items: center; gap: 5px; }
+.footer-credit a { color: #F4B942; font-weight: 600; transition: color 0.15s; }
+.footer-credit a:hover { color: #fff; text-decoration: underline; }
+.footer-policy { display: flex; align-items: center; gap: 14px; }
+.footer-policy span { cursor: pointer; transition: color 0.15s; }
+.footer-policy span:hover { color: rgba(255,255,255,0.8); }
+
+/* ══════════════════════════════════
+   TOAST
+══════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: var(--r2); padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink);
+  box-shadow: var(--shadow-lg); z-index: 300;
+  transform: translateX(120%);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  max-width: 320px;
+}
+.toast.show { transform: translateX(0); }
+.toast-icon { font-size: 18px; flex-shrink: 0; }
+.toast-close {
+  margin-left: auto; background: none; border: none;
+  color: var(--ink4); cursor: pointer; font-size: 16px;
+}
+
+/* ══════════════════════════════════
+   SEARCH OVERLAY
+══════════════════════════════════ */
+.search-overlay {
+  position: fixed; inset: 0;
+  background: rgba(15,30,54,0.75);
+  z-index: 200; display: flex;
+  align-items: flex-start; justify-content: center;
+  padding-top: 80px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(6px);
+}
+.search-overlay.open { opacity: 1; pointer-events: all; }
+.search-box {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r3); width: 640px;
+  padding: 24px; box-shadow: var(--shadow-lg);
+}
+.search-row {
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 16px; margin-bottom: 18px;
+}
+.search-icon-lg { font-size: 22px; color: var(--red); }
+.search-input {
+  flex: 1; background: transparent; border: none;
+  outline: none; font-size: 20px;
+  font-family: var(--serif); color: var(--ink);
+}
+.search-input::placeholder { color: var(--ink4); }
+.search-x { background: none; border: none; color: var(--ink3); cursor: pointer; font-size: 22px; }
+.search-hint { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink4); margin-bottom: 10px; }
+.search-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.search-chip {
+  padding: 4px 12px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 20px;
+  font-size: 12px; color: var(--ink2); cursor: pointer;
+  transition: all 0.15s;
+}
+.search-chip:hover { border-color: var(--red); color: var(--red); background: var(--red-bg); }
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.anim { opacity:0; animation: fadeUp 0.45s var(--ease) forwards; }
+.anim:nth-child(1){ animation-delay:0.05s; }
+.anim:nth-child(2){ animation-delay:0.12s; }
+.anim:nth-child(3){ animation-delay:0.19s; }
+.anim:nth-child(4){ animation-delay:0.26s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width:1060px){
+  .layout { grid-template-columns:1fr; }
+  .sidebar { display:grid; grid-template-columns:1fr 1fr; }
+}
+@media (max-width:860px){
+  .hero-grid { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .grid-3 { grid-template-columns:1fr 1fr; }
+  .feat-strip-body { grid-template-columns:1fr 1fr; }
+  .epaper-grid { grid-template-columns:1fr 1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .masthead-inner { grid-template-columns:1fr; justify-items:center; text-align:center; }
+  .masthead-left,.masthead-right{ display:none; }
+}
+@media (max-width:600px){
+  .grid-3,.grid-2 { grid-template-columns:1fr; }
+  .sidebar { grid-template-columns:1fr; }
+  .cat-tabs { overflow-x:auto; }
+  .cat-tab { min-width:80px; }
+  .footer-grid { grid-template-columns:1fr; }
+  .footer-bottom-inner { flex-direction:column; text-align:center; }
+  .breaking-time { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ BREAKING BAR ══ -->
+<div class="breaking-bar">
+  <div class="breaking-inner">
+    <div class="breaking-label"><span class="pulse-dot"></span> Breaking</div>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-tag">ASSAM</span>Brahmaputra overflows in 14 districts; army deploys for flood relief as 2.3 lakh families displaced</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">NEPAL</span>Kathmandu parliament tables constitutional amendment bill; session extended by three weeks</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">KAZIRANGA</span>Record 4,014 one-horned rhinos counted in 2025 aerial census — highest in two decades</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">MANIPUR</span>Peace talks resume in Imphal; inter-community dialogue committee formed with central support</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">SIKKIM</span>Teesta Restoration Phase II inaugurated; Rs 2,200 crore allocated for flood-damaged infrastructure</div>
+        <span class="ticker-sep">◆</span>
+        <!-- duplicate for seamless loop -->
+        <div class="ticker-item"><span class="ticker-tag">ASSAM</span>Brahmaputra overflows in 14 districts; army deploys for flood relief as 2.3 lakh families displaced</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">NEPAL</span>Kathmandu parliament tables constitutional amendment bill; session extended by three weeks</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">KAZIRANGA</span>Record 4,014 one-horned rhinos counted in 2025 aerial census — highest in two decades</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">MANIPUR</span>Peace talks resume in Imphal; inter-community dialogue committee formed with central support</div>
+        <span class="ticker-sep">◆</span>
+        <div class="ticker-item"><span class="ticker-tag">SIKKIM</span>Teesta Restoration Phase II inaugurated; Rs 2,200 crore allocated for flood-damaged infrastructure</div>
+      </div>
+    </div>
+    <div class="breaking-time" id="breaking-time">MON 19 MAY</div>
+  </div>
+</div>
+
+<!-- ══ UTILITY BAR ══ -->
+<div class="utility-bar">
+  <div class="utility-inner container">
+    <div class="util-left">
+      <span class="util-link" id="util-date">📅 Monday, 19 May 2025</span>
+      <span class="util-sep">|</span>
+      <span class="util-link">📍 Guwahati, Assam</span>
+      <span class="util-sep">|</span>
+      <span class="util-link">🌤 28°C · Humid</span>
+    </div>
+    <div class="util-right">
+      <div class="lang-set">
+        <button class="lang-btn active" onclick="setLang(this,'English')">EN</button>
+        <button class="lang-btn" onclick="setLang(this,'Nepali')">नेपाली</button>
+        <button class="lang-btn" onclick="setLang(this,'Assamese')">অসমীয়া</button>
+        <button class="lang-btn" onclick="setLang(this,'Hindi')">हिंदी</button>
+      </div>
+      <span class="util-sep">|</span>
+      <span class="util-link" onclick="openSearch()">🔍 Search</span>
+      <span class="util-sep">|</span>
+      <span class="util-link">👤 Login / Register</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MASTHEAD ══ -->
+<header class="masthead">
+  <div class="masthead-inner container">
+    <div class="masthead-left">
+      <div class="masthead-dateline" id="masthead-date">Monday, 19 May 2025 · Vol. XIII, No. 139</div>
+      <div class="masthead-edition">Edition: <strong>Northeast India & Nepal</strong> · Digital + Print</div>
+      <div class="masthead-readers">Trusted by <strong>1.2M+ readers</strong> across the region</div>
+    </div>
+    <div class="masthead-logo">
+      <img
+        src="https://hamroprajashakti.in/uploads/logo/NS7059728.png"
+        alt="Hamro Prajashakti"
+        class="logo-img"
+        onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'"
+      >
+      <div id="logo-fallback" class="logo-img-fallback" style="display:none">हाम्रो प्रजाशक्ति</div>
+      <div class="logo-rule"></div>
+      <div class="logo-tagline">Nepal & Northeast India's Authoritative Voice</div>
+    </div>
+    <div class="masthead-right">
+      <div class="social-row">
+        <div class="social-btn" onclick="showToast('𝐟','Facebook page...')" title="Facebook">𝐟</div>
+        <div class="social-btn" onclick="showToast('𝕏','X / Twitter...')" title="X / Twitter">𝕏</div>
+        <div class="social-btn" onclick="showToast('▶','YouTube...')" title="YouTube">▶</div>
+        <div class="social-btn" onclick="showToast('◉','Instagram...')" title="Instagram">◉</div>
+        <div class="social-btn" onclick="showToast('💬','WhatsApp...')" title="WhatsApp">💬</div>
+      </div>
+      <button class="epaper-cta" onclick="showToast('📰','Opening E-Paper...')">📰 Read Today's E-Paper</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ PRIMARY NAV ══ -->
+<nav class="primary-nav">
+  <div class="container" style="padding:0 20px">
+    <div class="nav-scroll">
+      <div class="nav-link home active" onclick="setNav(this)">🏠 Home</div>
+      <div class="nav-divider"></div>
+      <div class="nav-link" onclick="setNav(this)">Nepal</div>
+      <div class="nav-link" onclick="setNav(this)">Assam</div>
+      <div class="nav-link" onclick="setNav(this)">Manipur</div>
+      <div class="nav-link" onclick="setNav(this)">Nagaland</div>
+      <div class="nav-link" onclick="setNav(this)">Meghalaya</div>
+      <div class="nav-link" onclick="setNav(this)">Sikkim</div>
+      <div class="nav-link" onclick="setNav(this)">Mizoram</div>
+      <div class="nav-link" onclick="setNav(this)">Arunachal</div>
+      <div class="nav-divider"></div>
+      <div class="nav-link" onclick="setNav(this)">Politics</div>
+      <div class="nav-link" onclick="setNav(this)">Wildlife</div>
+      <div class="nav-link" onclick="setNav(this)">Business</div>
+      <div class="nav-link" onclick="setNav(this)">Culture</div>
+      <div class="nav-link" onclick="setNav(this)">Sports</div>
+      <div class="nav-link" onclick="setNav(this)">Opinion</div>
+      <div class="nav-link nav-live" onclick="setNav(this)"><span class="pulse-dot" style="background:var(--red)"></span> Live</div>
+      <div class="nav-search-btn" onclick="openSearch()">🔍 Search</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MAIN CONTENT ══ -->
+<main class="page">
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero-grid">
+    <!-- Main Story -->
+    <div class="hero-main" onclick="showToast('📰','Opening article...')">
+      <div class="hero-img-wrap">
+        <div class="hero-img-placeholder hpi-flood">
+          <div class="hpi-overlay"></div>
+          <div class="hpi-label">📸 Brahmaputra Flood — Assam, May 2025</div>
+        </div>
+      </div>
+      <div class="hero-main-body">
+        <div class="hero-cat-pill">🔴 Breaking · Assam</div>
+        <div class="hero-title">Brahmaputra Overflows Across 14 Districts; Army Joins Relief as 2.3 Lakh Families Left Homeless</div>
+        <div class="hero-excerpt">The Brahmaputra river crossed danger levels at Guwahati, Dibrugarh and Jorhat simultaneously on Sunday, triggering emergency evacuations and prompting the state government to seek army deployment for relief operations in the worst-hit areas.</div>
+        <div class="hero-byline">
+          <strong>By Priya Borah</strong>
+          <span class="byline-dot"></span>
+          <span>Senior Correspondent, Guwahati</span>
+          <span class="byline-dot"></span>
+          <span>2 hours ago</span>
+          <span style="margin-left:auto;display:flex;align-items:center;gap:4px;font-size:11px">👁 84,200 views</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right stories -->
+    <div class="hero-right">
+      <div class="hero-right-item" onclick="showToast('📰','Opening article...')">
+        <div class="hri-img-wrap">
+          <div class="hri-img-placeholder hpi-wildlife">
+            <div class="hpi-overlay"></div>
+            <div class="hpi-label">📸 Kaziranga, Assam</div>
+          </div>
+        </div>
+        <div class="hri-body">
+          <div class="hero-cat-pill gold">🦏 Wildlife</div>
+          <div class="hri-title">Kaziranga 2025 Census: Record 4,014 One-Horned Rhinos — a Historic Conservation Milestone</div>
+          <div class="hri-meta">By Arjun Das · 4h ago · 41.8K views</div>
+        </div>
+      </div>
+      <div class="hero-right-sep"></div>
+      <div class="hero-right-item" onclick="showToast('📰','Opening article...')">
+        <div class="hri-img-wrap">
+          <div class="hri-img-placeholder hpi-politics">
+            <div class="hpi-overlay"></div>
+            <div class="hpi-label">📸 Imphal, Manipur</div>
+          </div>
+        </div>
+        <div class="hri-body">
+          <div class="hero-cat-pill navy">🕊 Manipur</div>
+          <div class="hri-title">Peace Talks Resume in Imphal; 24-Member Inter-Community Dialogue Panel Holds Inaugural Session</div>
+          <div class="hri-meta">By Thoibi Sharma · 6h ago · 28.4K views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE UPDATES -->
+  <div class="live-bar">
+    <div class="live-bar-head">
+      <div class="live-pill"><span class="pulse-dot"></span> LIVE</div>
+      <div class="live-topic">Assam Flood Updates — Brahmaputra Crisis</div>
+      <div class="live-ts" id="live-ts">Updated: 2 mins ago</div>
+    </div>
+    <div class="live-item" onclick="showToast('🔴','Live update...')">
+      <div class="live-time">14:32</div>
+      <div class="live-text"><strong>Guwahati:</strong> NDRF teams deployed in Kamrup, Morigaon and Barpeta districts following flash flooding reports. 12 columns operational as of 2 PM.</div>
+    </div>
+    <div class="live-item" onclick="showToast('🔴','Live update...')">
+      <div class="live-time">13:55</div>
+      <div class="live-text"><strong>Jorhat:</strong> Majuli island district reports third embankment breach in 48 hours — 12,000 residents shifted to 18 relief camps across the island.</div>
+    </div>
+    <div class="live-item" onclick="showToast('🔴','Live update...')">
+      <div class="live-time">13:10</div>
+      <div class="live-text"><strong>New Delhi:</strong> Union Home Minister reviews Assam flood situation via video conference; aerial survey teams dispatched from IAF base Borjhar.</div>
+    </div>
+  </div>
+
+  <!-- FEATURED STRIP -->
+  <div class="feat-strip">
+    <div class="feat-strip-head">
+      <div class="feat-strip-label">⚡ Editor's Picks — Must Read Today</div>
+      <div class="feat-strip-sub">Curated by Newsroom · Updated every hour</div>
+    </div>
+    <div class="feat-strip-body">
+      <div class="feat-item" onclick="showToast('📰','Opening article...')">
+        <div class="feat-item-cat">🏔 Sikkim</div>
+        <div class="feat-item-title">Teesta Restoration: Rs 2,200 Crore Phase II Rebuild Begins After Flash-Flood Devastation</div>
+        <div class="feat-item-time">3 hours ago</div>
+      </div>
+      <div class="feat-item" onclick="showToast('📰','Opening article...')">
+        <div class="feat-item-cat">🇳🇵 Nepal</div>
+        <div class="feat-item-title">Parliament Tables Constitutional Amendment on Federal Resource Sharing Between Provinces</div>
+        <div class="feat-item-time">5 hours ago</div>
+      </div>
+      <div class="feat-item" onclick="showToast('📰','Opening article...')">
+        <div class="feat-item-cat">🌿 Culture</div>
+        <div class="feat-item-title">Bihu Dance Earns UNESCO Intangible Heritage Status — Northeast India Celebrates Global Recognition</div>
+        <div class="feat-item-time">Yesterday</div>
+      </div>
+      <div class="feat-item" onclick="showToast('📰','Opening article...')">
+        <div class="feat-item-cat">💼 Business</div>
+        <div class="feat-item-title">Guwahati Smart City Phase III: ₹3,800 Crore Investment Plan Approved; 18,000 Jobs by 2027</div>
+        <div class="feat-item-time">Yesterday</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY TABS -->
+  <div class="cat-tabs">
+    <div class="cat-tab active" onclick="setCatTab(this)"><div class="cat-icon">🏠</div><div class="cat-name">Top Stories</div><div class="cat-count">48 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">🇳🇵</div><div class="cat-name">Nepal</div><div class="cat-count">22 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">🏔</div><div class="cat-name">Assam</div><div class="cat-count">38 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">🕊</div><div class="cat-name">Manipur</div><div class="cat-count">14 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">🦏</div><div class="cat-name">Wildlife</div><div class="cat-count">9 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">🏛</div><div class="cat-name">Politics</div><div class="cat-count">31 new</div></div>
+    <div class="cat-tab" onclick="setCatTab(this)"><div class="cat-icon">💼</div><div class="cat-name">Business</div><div class="cat-count">12 new</div></div>
+  </div>
+
+  <!-- MAIN + SIDEBAR -->
+  <div class="layout">
+    <div>
+
+      <!-- LATEST NEWS CARDS -->
+      <div style="margin-bottom:24px">
+        <div class="sec-head">
+          <div class="sec-accent"></div>
+          <div class="sec-title">Latest News</div>
+          <div class="sec-rule-red"></div>
+          <div class="sec-more" onclick="showToast('📰','Loading all news...')">All Stories →</div>
+        </div>
+        <div class="grid-3">
+          <div class="card anim" onclick="showToast('📰','Opening article...')">
+            <div class="card-img-wrap">
+              <div class="card-img-placeholder hpi-flood">🌊</div>
+              <span class="card-badge cb-red">Breaking</span>
+            </div>
+            <div class="card-body">
+              <div class="card-cat red">Assam <span class="card-cat-sep"></span> Flood Emergency</div>
+              <div class="card-title">14 Districts Under Red Alert as Brahmaputra Swells Past Danger Mark in Three Cities</div>
+              <div class="card-excerpt">Emergency response activated across Kamrup, Morigaon, Barpeta and Jorhat. Over 2,300 relief camps now operational statewide.</div>
+              <div class="card-meta">
+                <span>Priya Borah</span>
+                <span style="width:3px;height:3px;background:var(--border2);border-radius:50%"></span>
+                <span>2h ago</span>
+                <div class="card-views">👁 84K</div>
+              </div>
+            </div>
+          </div>
+          <div class="card anim" onclick="showToast('📰','Opening article...')">
+            <div class="card-img-wrap">
+              <div class="card-img-placeholder hpi-wildlife">🦏</div>
+              <span class="card-badge cb-gold">Wildlife</span>
+            </div>
+            <div class="card-body">
+              <div class="card-cat gold">Kaziranga <span class="card-cat-sep"></span> Conservation</div>
+              <div class="card-title">Rhino Population Hits All-Time High: 4,014 Counted in 2025 Kaziranga Aerial Census</div>
+              <div class="card-excerpt">A landmark census result credits anti-poaching technology and community forest guardians for the record recovery of the species.</div>
+              <div class="card-meta">
+                <span>Arjun Das</span>
+                <span style="width:3px;height:3px;background:var(--border2);border-radius:50%"></span>
+                <span>4h ago</span>
+                <div class="card-views">👁 41K</div>
+              </div>
+            </div>
+          </div>
+          <div class="card anim" onclick="showToast('📰','Opening article...')">
+            <div class="card-img-wrap">
+              <div class="card-img-placeholder hpi-politics">🏛</div>
+              <span class="card-badge cb-navy">Manipur</span>
+            </div>
+            <div class="card-body">
+              <div class="card-cat navy">Manipur <span class="card-cat-sep"></span> Peace</div>
+              <div class="card-title">Imphal Peace Talks: 24-Member Dialogue Panel Includes Representatives from All Communities</div>
+              <div class="card-excerpt">The inaugural inter-community dialogue session brought together Meitei, Kuki-Zo, and Naga community leaders under central mediation.</div>
+              <div class="card-meta">
+                <span>Thoibi Sharma</span>
+                <span style="width:3px;height:3px;background:var(--border2);border-radius:50%"></span>
+                <span>6h ago</span>
+                <div class="card-views">👁 28K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AD ZONE — LEADERBOARD -->
+      <div class="ad-zone" style="margin-bottom:22px">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-slot" style="min-height:90px" onclick="showToast('📢','Ad zone — contact ads@hamroprajashakti.in')">
+          <div class="ad-slot-text">Advertisement — Leaderboard 728 × 90 px</div>
+          <div class="ad-slot-dim">ads@hamroprajashakti.in</div>
+        </div>
+      </div>
+
+      <!-- ASSAM SECTION -->
+      <div style="margin-bottom:24px">
+        <div class="sec-head">
+          <div class="sec-accent"></div>
+          <div class="sec-title">Assam</div>
+          <div class="sec-rule"></div>
+          <div class="sec-more" onclick="showToast('🏔','Assam section...')">More from Assam →</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="hcard" onclick="showToast('📰','Opening article...')">
+            <div class="hcard-img hpi-assam">🌿</div>
+            <div class="hcard-body">
+              <div class="hcard-cat">Guwahati · Smart City</div>
+              <div class="hcard-title">Rs 3,800 Crore Smart City Guwahati Phase III Plan Approved — 18,000 New Jobs by 2027</div>
+              <div class="hcard-meta">5h ago · 12,400 views · By Ranjit Gogoi</div>
+            </div>
+          </div>
+          <div class="hcard" onclick="showToast('📰','Opening article...')">
+            <div class="hcard-img hpi-culture">🌿</div>
+            <div class="hcard-body">
+              <div class="hcard-cat">Culture · UNESCO Heritage</div>
+              <div class="hcard-title">Bihu Dance Recognised by UNESCO as Intangible Cultural Heritage of Humanity</div>
+              <div class="hcard-meta">Yesterday · 38,600 views · By Mrinali Baruah</div>
+            </div>
+          </div>
+          <div class="hcard" onclick="showToast('📰','Opening article...')">
+            <div class="hcard-img hpi-flood">💧</div>
+            <div class="hcard-body">
+              <div class="hcard-cat">Rivers · Environment</div>
+              <div class="hcard-title">Doyang Dam Water Level Critical; Nagaland Issues Downstream Warning for Assam Border Villages</div>
+              <div class="hcard-meta">8h ago · 9,800 views · By Dipjyoti Bora</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLITICS & WILDLIFE TWO-COL -->
+      <div class="grid-2" style="margin-bottom:24px">
+        <div>
+          <div class="sec-head">
+            <div class="sec-accent" style="background:var(--navy)"></div>
+            <div class="sec-title-sm">Politics</div>
+            <div class="sec-rule"></div>
+            <div class="sec-more" onclick="showToast('🏛','Politics...')">More →</div>
+          </div>
+          <div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">01</div>
+              <div class="litem-body">
+                <div class="litem-title">Northeast Council Backs Unified Digital Infrastructure Policy for All 8 States</div>
+                <div class="litem-meta">Politics · 3h ago · 18K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">02</div>
+              <div class="litem-body">
+                <div class="litem-title">Meghalaya CM Tables Autonomous District Council Reform Bill in State Assembly</div>
+                <div class="litem-meta">Meghalaya · 5h ago · 11K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">03</div>
+              <div class="litem-body">
+                <div class="litem-title">Nepal's Kathmandu Metropolitan City Elects New Mayor in By-Elections</div>
+                <div class="litem-meta">Nepal · 7h ago · 9K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">04</div>
+              <div class="litem-body">
+                <div class="litem-title">Nagaland Peace Accord Talks Resume After 14-Month Pause, Framework Under Review</div>
+                <div class="litem-meta">Nagaland · 9h ago · 14K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">05</div>
+              <div class="litem-body">
+                <div class="litem-title">Mizoram–Myanmar Border Tension; BSF Deploys Additional Battalions Along Frontier</div>
+                <div class="litem-meta">Mizoram · Yesterday · 16K views</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-head">
+            <div class="sec-accent" style="background:var(--green)"></div>
+            <div class="sec-title-sm">Wildlife & Nature</div>
+            <div class="sec-rule"></div>
+            <div class="sec-more" onclick="showToast('🦏','Wildlife...')">More →</div>
+          </div>
+          <div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">01</div>
+              <div class="litem-body">
+                <div class="litem-title">Tiger Count in Manas National Park Reaches 52; Satellite Tracking Confirms New Territory</div>
+                <div class="litem-meta">Wildlife · 3h ago · 22K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">02</div>
+              <div class="litem-body">
+                <div class="litem-title">Rare Clouded Leopard Caught on Camera Trap in Namdapha — First in 12 Years</div>
+                <div class="litem-meta">Arunachal · 6h ago · 30K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">03</div>
+              <div class="litem-body">
+                <div class="litem-title">Man-Elephant Conflict Deaths Drop 40% in Assam After Wildlife Corridor Restoration</div>
+                <div class="litem-meta">Assam · 8h ago · 17K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">04</div>
+              <div class="litem-body">
+                <div class="litem-title">Loktak Lake Pollution: NGT Orders Meghalaya & Manipur to Submit Joint Remediation Plan</div>
+                <div class="litem-meta">Manipur · Yesterday · 8K views</div>
+              </div>
+            </div>
+            <div class="litem" onclick="showToast('📰','Opening...')">
+              <div class="litem-num">05</div>
+              <div class="litem-body">
+                <div class="litem-title">Dibru-Saikhowa Feral Horse Population Grows to 108; Forest Dept Launches Protected Grazing Plan</div>
+                <div class="litem-meta">Assam · Yesterday · 13K views</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-PAPER SECTION -->
+      <div class="epaper-section">
+        <div class="epaper-head">
+          <span style="font-size:22px">📰</span>
+          <div class="epaper-head-title">Today's E-Paper Editions</div>
+          <div class="epaper-head-more" onclick="showToast('📰','Loading archive...')">View Full Archive →</div>
+        </div>
+        <div class="epaper-grid">
+          <div class="epaper-card" onclick="showToast('📰','Opening Assam edition...')">
+            <div class="epaper-thumb">
+              <div class="epaper-thumb-grid"></div>
+              <div class="epaper-thumb-icon">📰</div>
+              <div class="epaper-thumb-name">Hamro Prajashakti<br>Assam</div>
+            </div>
+            <div class="epaper-card-edition">Assam Edition</div>
+            <div class="epaper-card-date">Mon, 19 May 2025</div>
+            <div class="epaper-card-btn">📥 Read / Download</div>
+          </div>
+          <div class="epaper-card" onclick="showToast('📰','Opening Nepal edition...')">
+            <div class="epaper-thumb">
+              <div class="epaper-thumb-grid"></div>
+              <div class="epaper-thumb-icon">📰</div>
+              <div class="epaper-thumb-name">Hamro Prajashakti<br>Nepal</div>
+            </div>
+            <div class="epaper-card-edition">Nepal Edition</div>
+            <div class="epaper-card-date">Mon, 19 May 2025</div>
+            <div class="epaper-card-btn">📥 Read / Download</div>
+          </div>
+          <div class="epaper-card" onclick="showToast('📰','Opening Manipur edition...')">
+            <div class="epaper-thumb">
+              <div class="epaper-thumb-grid"></div>
+              <div class="epaper-thumb-icon">📰</div>
+              <div class="epaper-thumb-name">Hamro Prajashakti<br>Manipur</div>
+            </div>
+            <div class="epaper-card-edition">Manipur Edition</div>
+            <div class="epaper-card-date">Mon, 19 May 2025</div>
+            <div class="epaper-card-btn">📥 Read / Download</div>
+          </div>
+          <div class="epaper-card" onclick="showToast('📰','Opening Sikkim edition...')">
+            <div class="epaper-thumb">
+              <div class="epaper-thumb-grid"></div>
+              <div class="epaper-thumb-icon">📰</div>
+              <div class="epaper-thumb-name">Hamro Prajashakti<br>Sikkim</div>
+            </div>
+            <div class="epaper-card-edition">Sikkim Edition</div>
+            <div class="epaper-card-date">Mon, 19 May 2025</div>
+            <div class="epaper-card-btn">📥 Read / Download</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main col -->
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+
+      <!-- TRENDING -->
+      <div class="widget">
+        <div class="widget-head">
+          <div class="w-accent"></div>
+          <div class="widget-title">🔥 Trending Now</div>
+        </div>
+        <div>
+          <div class="trend-item" onclick="showToast('🔥','Opening...')">
+            <div class="trend-num">1</div>
+            <div>
+              <div class="trend-title">Brahmaputra Floods: 2.3 Lakh Displaced Across 14 Assam Districts</div>
+              <div class="trend-meta">84K views · 2h ago</div>
+            </div>
+          </div>
+          <div class="trend-item" onclick="showToast('🔥','Opening...')">
+            <div class="trend-num">2</div>
+            <div>
+              <div class="trend-title">Bihu Gets UNESCO Heritage Status — Northeast Celebrates</div>
+              <div class="trend-meta">38K views · Yesterday</div>
+            </div>
+          </div>
+          <div class="trend-item" onclick="showToast('🔥','Opening...')">
+            <div class="trend-num">3</div>
+            <div>
+              <div class="trend-title">Kaziranga Rhino Count Hits Record 4,014 in 2025 Census</div>
+              <div class="trend-meta">41K views · 4h ago</div>
+            </div>
+          </div>
+          <div class="trend-item" onclick="showToast('🔥','Opening...')">
+            <div class="trend-num muted">4</div>
+            <div>
+              <div class="trend-title">Nepal Parliament Tables Federal Resource Sharing Bill</div>
+              <div class="trend-meta">22K views · 5h ago</div>
+            </div>
+          </div>
+          <div class="trend-item" onclick="showToast('🔥','Opening...')">
+            <div class="trend-num muted">5</div>
+            <div>
+              <div class="trend-title">Rare Clouded Leopard Spotted on Camera in Namdapha Reserve</div>
+              <div class="trend-meta">30K views · 6h ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AD 300x250 -->
+      <div class="ad-zone">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-slot" style="min-height:250px" onclick="showToast('📢','Ad zone clicked')">
+          <div class="ad-slot-text">Advertisement Zone<br>300 × 250 px</div>
+          <div class="ad-slot-dim">ads@hamroprajashakti.in</div>
+        </div>
+      </div>
+
+      <!-- WEATHER -->
+      <div class="widget">
+        <div class="widget-head">
+          <div class="w-accent" style="background:var(--navy)"></div>
+          <div class="widget-title">🌤 Weather — NE India</div>
+        </div>
+        <div class="weather-w">
+          <div class="weather-main">
+            <div class="weather-icon">⛅</div>
+            <div>
+              <div class="weather-temp">28<sup>°C</sup></div>
+              <div class="weather-loc">📍 Guwahati, Assam</div>
+              <div class="weather-desc">Partly Cloudy · Very Humid</div>
+            </div>
+          </div>
+          <div class="weather-stats">
+            <div class="weather-stat"><div class="weather-stat-v">82%</div><div class="weather-stat-l">Humidity</div></div>
+            <div class="weather-stat"><div class="weather-stat-v">18km/h</div><div class="weather-stat-l">Wind</div></div>
+            <div class="weather-stat"><div class="weather-stat-v">High</div><div class="weather-stat-l">UV Index</div></div>
+          </div>
+          <div class="weather-forecast">
+            <div class="fc-day"><div class="fc-name">TUE</div><div class="fc-icon">⛈</div><div class="fc-temp">27°</div></div>
+            <div class="fc-day"><div class="fc-name">WED</div><div class="fc-icon">🌧</div><div class="fc-temp">26°</div></div>
+            <div class="fc-day"><div class="fc-name">THU</div><div class="fc-icon">🌦</div><div class="fc-temp">28°</div></div>
+            <div class="fc-day"><div class="fc-name">FRI</div><div class="fc-icon">⛅</div><div class="fc-temp">30°</div></div>
+            <div class="fc-day"><div class="fc-name">SAT</div><div class="fc-icon">☀️</div><div class="fc-temp">32°</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-PAPER SIDEBAR -->
+      <div class="widget">
+        <div class="widget-head">
+          <div class="w-accent" style="background:var(--navy)"></div>
+          <div class="widget-title">📰 Today's E-Paper</div>
+        </div>
+        <div class="epaper-w">
+          <div class="epaper-w-preview" onclick="showToast('📰','Opening E-Paper...')">
+            <div class="epaper-w-grid"></div>
+            <div class="epaper-w-icon">📰</div>
+            <div class="epaper-w-name">Hamro Prajashakti<br>Assam Edition</div>
+            <div class="epaper-w-date">MON · 19 MAY 2025</div>
+          </div>
+          <div class="epaper-w-editions">
+            <div class="epaper-w-ed" onclick="showToast('📰','Nepal edition...')"><div class="epaper-w-ed-name">Nepal</div><div class="epaper-w-ed-date">19 May 2025</div></div>
+            <div class="epaper-w-ed" onclick="showToast('📰','Manipur edition...')"><div class="epaper-w-ed-name">Manipur</div><div class="epaper-w-ed-date">19 May 2025</div></div>
+            <div class="epaper-w-ed" onclick="showToast('📰','Nagaland edition...')"><div class="epaper-w-ed-name">Nagaland</div><div class="epaper-w-ed-date">19 May 2025</div></div>
+            <div class="epaper-w-ed" onclick="showToast('📰','Sikkim edition...')"><div class="epaper-w-ed-name">Sikkim</div><div class="epaper-w-ed-date">19 May 2025</div></div>
+          </div>
+          <button class="epaper-dl" onclick="showToast('📥','Downloading PDF...')">📥 Download PDF Edition</button>
+        </div>
+      </div>
+
+      <!-- POLL -->
+      <div class="widget">
+        <div class="widget-head">
+          <div class="w-accent" style="background:var(--green)"></div>
+          <div class="widget-title">📊 Reader Poll</div>
+        </div>
+        <div class="poll-w">
+          <div class="poll-q">How should the government prioritise Brahmaputra flood relief?</div>
+          <div class="poll-opt" onclick="votePoll(this)">
+            <div class="poll-opt-bar" style="width:52%"></div>
+            <div class="poll-opt-row"><span>Immediate evacuation & food aid</span><span class="poll-opt-pct">52%</span></div>
+          </div>
+          <div class="poll-opt" onclick="votePoll(this)">
+            <div class="poll-opt-bar" style="width:28%"></div>
+            <div class="poll-opt-row"><span>Long-term embankment repair</span><span class="poll-opt-pct">28%</span></div>
+          </div>
+          <div class="poll-opt" onclick="votePoll(this)">
+            <div class="poll-opt-bar" style="width:13%"></div>
+            <div class="poll-opt-row"><span>Cash compensation to farmers</span><span class="poll-opt-pct">13%</span></div>
+          </div>
+          <div class="poll-opt" onclick="votePoll(this)">
+            <div class="poll-opt-bar" style="width:7%"></div>
+            <div class="poll-opt-row"><span>All of the above, equally</span><span class="poll-opt-pct">7%</span></div>
+          </div>
+          <div class="poll-votes">12,488 votes · Poll closes in 18 hours</div>
+        </div>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="widget">
+        <div class="widget-head">
+          <div class="w-accent" style="background:var(--green)"></div>
+          <div class="widget-title">✉️ Morning Newsletter</div>
+        </div>
+        <div class="newsletter-w">
+          <div class="newsletter-title">Stay Informed</div>
+          <div class="newsletter-desc">Get Northeast India and Nepal's top stories delivered to your inbox every morning — free, curated, reliable.</div>
+          <input class="nl-input" type="email" placeholder="your@email.com">
+          <button class="nl-btn" onclick="showToast('✅','Subscribed successfully!')">Subscribe — It's Free</button>
+          <div class="nl-note">No spam · Unsubscribe anytime · 1,80,000+ subscribers</div>
+        </div>
+      </div>
+
+      <!-- AD 300x600 -->
+      <div class="ad-zone">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-slot" style="min-height:600px" onclick="showToast('📢','Ad zone clicked')">
+          <div class="ad-slot-text">Advertisement Zone<br>300 × 600 px · Skyscraper</div>
+          <div class="ad-slot-dim">ads@hamroprajashakti.in</div>
+        </div>
+      </div>
+
+    </aside>
+  </div><!-- /layout -->
+
+</div><!-- /container -->
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo-name">हाम्रो प्रजाशक्ति</div>
+          <div class="footer-logo-sub">Nepal & Northeast India's Authoritative Voice</div>
+          <div class="footer-about">Established in 2012, Hamro Prajashakti is a trusted digital and print newsroom serving Nepal, Assam, Manipur, Nagaland, Meghalaya, Sikkim, Mizoram, Tripura, and Arunachal Pradesh — reporting in Nepali, Assamese, Bengali, Meitei, and English.</div>
+          <div class="footer-social">
+            <div class="footer-soc" onclick="showToast('𝐟','Facebook...')">𝐟</div>
+            <div class="footer-soc" onclick="showToast('𝕏','Twitter/X...')">𝕏</div>
+            <div class="footer-soc" onclick="showToast('▶','YouTube...')">▶</div>
+            <div class="footer-soc" onclick="showToast('◉','Instagram...')">◉</div>
+            <div class="footer-soc" onclick="showToast('💬','WhatsApp...')">💬</div>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">States & Regions</div>
+          <div class="footer-links">
+            <span class="footer-link" onclick="showToast('🇳🇵','Nepal...')">Nepal</span>
+            <span class="footer-link" onclick="showToast('🏔','Assam...')">Assam</span>
+            <span class="footer-link" onclick="showToast('🕊','Manipur...')">Manipur</span>
+            <span class="footer-link" onclick="showToast('🏔','Nagaland...')">Nagaland</span>
+            <span class="footer-link" onclick="showToast('🏔','Meghalaya...')">Meghalaya</span>
+            <span class="footer-link" onclick="showToast('🏔','Sikkim...')">Sikkim</span>
+            <span class="footer-link" onclick="showToast('🏔','Mizoram...')">Mizoram</span>
+            <span class="footer-link" onclick="showToast('🏔','Arunachal...')">Arunachal Pradesh</span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Topics</div>
+          <div class="footer-links">
+            <span class="footer-link" onclick="showToast('🏛','Politics...')">Politics & Governance</span>
+            <span class="footer-link" onclick="showToast('🦏','Wildlife...')">Wildlife & Conservation</span>
+            <span class="footer-link" onclick="showToast('💼','Business...')">Business & Economy</span>
+            <span class="footer-link" onclick="showToast('🌿','Culture...')">Culture & Heritage</span>
+            <span class="footer-link" onclick="showToast('⚽','Sports...')">Sports</span>
+            <span class="footer-link" onclick="showToast('🎓','Education...')">Education</span>
+            <span class="footer-link" onclick="showToast('💊','Health...')">Health</span>
+            <span class="footer-link" onclick="showToast('📰','E-Paper...')">E-Paper Archive</span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">About Us</div>
+          <div class="footer-links">
+            <span class="footer-link" onclick="showToast('ℹ️','About...')">About Hamro Prajashakti</span>
+            <span class="footer-link" onclick="showToast('✍️','Editorial team...')">Editorial Team</span>
+            <span class="footer-link" onclick="showToast('📢','Advertise...')">Advertise With Us</span>
+            <span class="footer-link" onclick="showToast('📩','Contact...')">Contact Us</span>
+            <span class="footer-link" onclick="showToast('💼','Careers...')">Careers</span>
+            <span class="footer-link" onclick="showToast('🔒','Privacy...')">Privacy Policy</span>
+            <span class="footer-link" onclick="showToast('📜','Terms...')">Terms of Service</span>
+            <span class="footer-link" onclick="showToast('✅','Corrections...')">Corrections Policy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div>© 2025 Hamro Prajashakti · हाम्रो प्रजाशक्ति. All rights reserved.</div>
+        <div class="footer-policy">
+          <span onclick="showToast('🔒','Privacy...')">Privacy</span>
+          <span onclick="showToast('📜','Terms...')">Terms</span>
+          <span onclick="showToast('🍪','Cookies...')">Cookies</span>
+          <span onclick="showToast('🗺','Sitemap...')">Sitemap</span>
+        </div>
+        <div class="footer-credit">
+          ✨ Designed &amp; Developed by
+          <a href="https://facebook.com/RKBOnline" target="_blank" rel="noopener noreferrer">Roshan Kumar Bhattarai</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toast-icon">📰</span>
+  <span id="toast-msg">Notification</span>
+  <button class="toast-close" onclick="closeToast()">✕</button>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay" onclick="bgClose(event)">
+  <div class="search-box">
+    <div class="search-row">
+      <span class="search-icon-lg">🔍</span>
+      <input class="search-input" id="s-input" placeholder="Search news, places, people…">
+      <button class="search-x" onclick="closeSearch()">✕</button>
+    </div>
+    <div class="search-hint">Popular Searches</div>
+    <div class="search-chips">
+      <span class="search-chip" onclick="doSearch('Brahmaputra Floods')">Brahmaputra Floods</span>
+      <span class="search-chip" onclick="doSearch('Kaziranga')">Kaziranga</span>
+      <span class="search-chip" onclick="doSearch('Manipur Peace')">Manipur Peace</span>
+      <span class="search-chip" onclick="doSearch('Bihu UNESCO')">Bihu UNESCO</span>
+      <span class="search-chip" onclick="doSearch('Nepal Parliament')">Nepal Parliament</span>
+      <span class="search-chip" onclick="doSearch('Teesta Restoration')">Teesta Restoration</span>
+      <span class="search-chip" onclick="doSearch('Nagaland Peace')">Nagaland Peace</span>
+      <span class="search-chip" onclick="doSearch('E-Paper')">E-Paper</span>
+      <span class="search-chip" onclick="doSearch('Assam Politics')">Assam Politics</span>
+      <span class="search-chip" onclick="doSearch('Wildlife NE India')">Wildlife NE India</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATE ──────────────────────────────────────────
+function setDates(){
+  const n=new Date(),
+    days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    months=['January','February','March','April','May','June','July','August','September','October','November','December'],
+    sMonths=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const d=days[n.getDay()],m=months[n.getMonth()],sm=sMonths[n.getMonth()];
+  const dd=String(n.getDate()).padStart(2,'0');
+  const yr=n.getFullYear();
+  const el=document.getElementById('masthead-date');
+  if(el) el.textContent=`${d}, ${n.getDate()} ${m} ${yr} · Vol. XIII, No. 139`;
+  const ud=document.getElementById('util-date');
+  if(ud) ud.textContent=`📅 ${d}, ${n.getDate()} ${m} ${yr}`;
+  const bt=document.getElementById('breaking-time');
+  if(bt) bt.textContent=`${d.slice(0,3).toUpperCase()} ${dd} ${sm.toUpperCase()}`;
+}
+setDates(); setInterval(setDates,60000);
+
+// ── NAV ───────────────────────────────────────────
+function setNav(el){
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── CAT TABS ──────────────────────────────────────
+function setCatTab(el){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  showToast('📰',`Loading ${el.querySelector('.cat-name').textContent} stories…`);
+}
+
+// ── LANG ──────────────────────────────────────────
+function setLang(el,name){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  showToast('🌐',`Switching to ${name}…`);
+}
+
+// ── TOAST ─────────────────────────────────────────
+let toastT;
+function showToast(icon,msg){
+  document.getElementById('toast-icon').textContent=icon;
+  document.getElementById('toast-msg').textContent=msg;
+  document.getElementById('toast').classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000);
+}
+function closeToast(){ document.getElementById('toast').classList.remove('show'); }
+
+// ── SEARCH ────────────────────────────────────────
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('s-input').focus(),80);
+}
+function closeSearch(){ document.getElementById('search-overlay').classList.remove('open'); }
+function bgClose(e){ if(e.target===document.getElementById('search-overlay')) closeSearch(); }
+function doSearch(term){
+  document.getElementById('s-input').value=term;
+  setTimeout(()=>{ closeSearch(); showToast('🔍',`Searching for "${term}"…`); },400);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeSearch();
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){ e.preventDefault(); openSearch(); }
+});
+
+// ── POLL ──────────────────────────────────────────
+function votePoll(el){
+  el.closest('.poll-w').querySelectorAll('.poll-opt').forEach(o=>{
+    o.style.borderColor=''; o.style.background='';
+  });
+  el.style.borderColor='var(--red)';
+  el.style.background='var(--red-dim)';
+  showToast('📊','Your vote has been recorded. Thank you!');
+}
+
+// ── STICKY NAV SHADOW ─────────────────────────────
+const nav=document.querySelector('.primary-nav');
+window.addEventListener('scroll',()=>{
+  nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(0,0,0,0.12)':'0 1px 4px rgba(0,0,0,0.07)';
+});
+
+// ── WELCOME ───────────────────────────────────────
+setTimeout(()=>showToast('📰','Welcome to Hamro Prajashakti — हाम्रो प्रजाशक्ति'),1000);
+</script>
+</body>
+</html>
